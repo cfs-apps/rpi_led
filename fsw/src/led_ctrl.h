@@ -111,6 +111,10 @@ void LED_CTRL_Constructor(LED_CTRL_Class_t *LedCtrlPtr, INITBL_Class_t *IniTbl);
 /******************************************************************************
 ** Function: LED_CTRL_ChildTask
 **
+** Notes:
+**   1.  This is a CHILDMGR callback function and the function signature must
+**       match CHILDMGR_TaskCallback_t.
+**
 */
 bool LED_CTRL_ChildTask(CHILDMGR_Class_t *ChildMgr);
 

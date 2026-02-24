@@ -43,9 +43,11 @@
 ** Versions:
 **
 ** 1.0 - Initial release
+** 3.0 - Compatible with Basecamp 4.0 and cFS 7.0
+**
 */
 
-#define  RPI_LED_MAJOR_VER   1
+#define  RPI_LED_MAJOR_VER   2
 #define  RPI_LED_MINOR_VER   0
 
 

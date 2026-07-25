@@ -3,7 +3,7 @@
    "app": {
    
    "title": "RPI_LED",
-   "version": "2.0.0",
+   "version": "3.1.0",
    "bc-app-spec": "bc-app-spec-v3.0",
    "supplier": "Open STEMware",
    "copyright": "bitValence",

@@ -175,7 +175,7 @@ static int32 InitApp(void)
    
       RpiLed.PerfId = INITBL_GetIntConfig(INITBL_OBJ, CFG_APP_PERF_ID);
       RpiLed.CmdMid = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_RPI_LED_CMD_TOPICID));
-      RpiLed.SendStatusMid = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_BC_SCH_1_HZ_TOPICID));
+      RpiLed.SendStatusMid = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_BC_SCH_1_SEC_TOPICID));
       
       CFE_ES_PerfLogEntry(RpiLed.PerfId);
 
@@ -203,11 +203,11 @@ static int32 InitApp(void)
       CFE_SB_Subscribe(RpiLed.SendStatusMid, RpiLed.CmdPipe);
 
       CMDMGR_Constructor(CMDMGR_OBJ);
-      CMDMGR_RegisterFunc(CMDMGR_OBJ, CMDMGR_NOOP_CMD_FC,   NULL, RPI_LED_NoOpCmd,     0);
-      CMDMGR_RegisterFunc(CMDMGR_OBJ, CMDMGR_RESET_CMD_FC,  NULL, RPI_LED_ResetAppCmd, 0);
+      CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_LED_NOOP_CC,    NULL, RPI_LED_NoOpCmd,     0);
+      CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_RESET_NOOP_CC,  NULL, RPI_LED_ResetAppCmd, 0);
 
-      CMDMGR_RegisterFunc(CMDMGR_OBJ, RPI_LED_SET_ON_TIME_CC,  LED_CTRL_OBJ, LED_CTRL_SetOnTimeCmd,  sizeof(RPI_LED_SetOnTime_Payload_t));
-      CMDMGR_RegisterFunc(CMDMGR_OBJ, RPI_LED_SET_OFF_TIME_CC, LED_CTRL_OBJ, LED_CTRL_SetOffTimeCmd, sizeof(RPI_LED_SetOffTime_Payload_t));
+      CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_LED_SET_ON_TIME_CC,  LED_CTRL_OBJ, LED_CTRL_SetOnTimeCmd,  sizeof(RPI_LED_SetOnTime_Payload_t));
+      CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_LED_SET_OFF_TIME_CC, LED_CTRL_OBJ, LED_CTRL_SetOffTimeCmd, sizeof(RPI_LED_SetOffTime_Payload_t));
       
       CFE_MSG_Init(CFE_MSG_PTR(RpiLed.StatusTlm.TelemetryHeader), CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_RPI_LED_STATUS_TLM_TOPICID)), sizeof(RPI_LED_StatusTlm_t));
    

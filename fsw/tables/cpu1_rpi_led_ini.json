@@ -11,7 +11,7 @@
       "APP_CMD_PIPE_DEPTH": 10,
       
       "RPI_LED_CMD_TOPICID"        : 0,
-      "BC_SCH_1_HZ_TOPICID"        : 0,
+      "BC_SCH_1_SEC_TOPICID"       : 0,
       "RPI_LED_STATUS_TLM_TOPICID" : 0,
 
       "CHILD_NAME":       "RPI_LED_CHILD",

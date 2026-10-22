@@ -26,7 +26,7 @@
       "load_addr": 0,
       "exception-action": 0,
       "app-framework": "osk",
-      "tables": ["rpi_led_ini.json"]
+      "json-tables": ["rpi_led_ini.json"]
    },
 
    "requires": ["app_c_fw", "rpi_iolib"]

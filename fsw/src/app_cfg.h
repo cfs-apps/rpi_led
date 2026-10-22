@@ -44,11 +44,12 @@
 **
 ** 1.0 - Initial release
 ** 3.1 - Compatible with Basecamp 3.x new app version management
+** 4.0 - Updated to cFS 7.0 (Basecamp 4.0 release)
 **
 */
 
-#define  RPI_LED_MAJOR_VER   3
-#define  RPI_LED_MINOR_VER   1
+#define  RPI_LED_MAJOR_VER   4
+#define  RPI_LED_MINOR_VER   0
 
 
 /******************************************************************************
@@ -77,7 +78,7 @@
 #define CFG_CMD_PIPE_DEPTH   APP_CMD_PIPE_DEPTH
 
 #define CFG_RPI_LED_CMD_TOPICID        RPI_LED_CMD_TOPICID
-#define CFG_BC_SCH_1_HZ_TOPICID        BC_SCH_1_HZ_TOPICID
+#define CFG_BC_SCH_1_SEC_TOPICID       BC_SCH_1_SEC_TOPICID
 #define CFG_RPI_LED_STATUS_TLM_TOPICID RPI_LED_STATUS_TLM_TOPICID
 
 #define CFG_CHILD_NAME       CHILD_NAME
@@ -95,7 +96,7 @@
    XX(APP_CMD_PIPE_NAME,char*) \
    XX(APP_CMD_PIPE_DEPTH,uint32) \
    XX(RPI_LED_CMD_TOPICID,uint32) \
-   XX(BC_SCH_1_HZ_TOPICID,uint32) \
+   XX(BC_SCH_1_SEC_TOPICID,uint32) \
    XX(RPI_LED_STATUS_TLM_TOPICID,uint32) \
    XX(CHILD_NAME,char*) \
    XX(CHILD_PERF_ID,uint32) \
@@ -116,8 +117,8 @@ DECLARE_ENUM(Config,APP_CONFIG)
 ** exceeded so it is the developer's responsibility to verify the ranges. 
 */
 
-#define RPI_LED_BASE_EID    (APP_C_FW_APP_BASE_EID +  0)
-#define LED_CTRL_BASE_EID   (APP_C_FW_APP_BASE_EID + 20)
+#define RPI_LED_BASE_EID    (EdsParam_APP_C_FW_APP_BASE_EID +  0)
+#define LED_CTRL_BASE_EID   (EdsParam_APP_C_FW_APP_BASE_EID + 20)
 
 
 #endif /* _app_cfg_ */

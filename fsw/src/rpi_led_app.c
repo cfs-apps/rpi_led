@@ -203,8 +203,8 @@ static int32 InitApp(void)
       CFE_SB_Subscribe(RpiLed.SendStatusMid, RpiLed.CmdPipe);
 
       CMDMGR_Constructor(CMDMGR_OBJ);
-      CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_LED_NOOP_CC,    NULL, RPI_LED_NoOpCmd,     0);
-      CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_RESET_NOOP_CC,  NULL, RPI_LED_ResetAppCmd, 0);
+      CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_LED_NOOP_CC,   NULL, RPI_LED_NoOpCmd,     0);
+      CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_LED_RESET_CC,  NULL, RPI_LED_ResetAppCmd, 0);
 
       CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_LED_SET_ON_TIME_CC,  LED_CTRL_OBJ, LED_CTRL_SetOnTimeCmd,  sizeof(RPI_LED_SetOnTime_Payload_t));
       CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_LED_SET_OFF_TIME_CC, LED_CTRL_OBJ, LED_CTRL_SetOffTimeCmd, sizeof(RPI_LED_SetOffTime_Payload_t));

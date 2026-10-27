@@ -1,4 +1,3 @@
-cmake_minimum_required(VERSION 2.6.4)
 project(CFS_RPI_LED C)
 
 include_directories(fsw/mission_inc)

@@ -173,9 +173,9 @@ static int32 InitApp(void)
    if (INITBL_Constructor(&RpiLed.IniTbl, RPI_LED_INI_FILENAME, &IniCfgEnum))
    {
    
-      RpiLed.PerfId = INITBL_GetIntConfig(INITBL_OBJ, CFG_APP_PERF_ID);
-      RpiLed.CmdMid = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_RPI_LED_CMD_TOPICID));
-      RpiLed.SendStatusMid = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_BC_SCH_1_SEC_TOPICID));
+      RpiLed.PerfId           = INITBL_GetIntConfig(INITBL_OBJ, CFG_APP_PERF_ID);
+      RpiLed.CmdMid           = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_RPI_LED_CMD_TOPICID));
+      RpiLed.SendStatusTlmMid = CFE_SB_ValueToMsgId(INITBL_GetIntConfig(INITBL_OBJ, CFG_RPI_LED_SEND_STATUS_TLM_TOPICID));
       
       CFE_ES_PerfLogEntry(RpiLed.PerfId);
 
@@ -200,7 +200,7 @@ static int32 InitApp(void)
       
       CFE_SB_CreatePipe(&RpiLed.CmdPipe, INITBL_GetIntConfig(INITBL_OBJ, CFG_CMD_PIPE_DEPTH), INITBL_GetStrConfig(INITBL_OBJ, CFG_CMD_PIPE_NAME));  
       CFE_SB_Subscribe(RpiLed.CmdMid, RpiLed.CmdPipe);
-      CFE_SB_Subscribe(RpiLed.SendStatusMid, RpiLed.CmdPipe);
+      CFE_SB_Subscribe(RpiLed.SendStatusTlmMid, RpiLed.CmdPipe);
 
       CMDMGR_Constructor(CMDMGR_OBJ);
       CMDMGR_RegisterFunc(CMDMGR_OBJ, EDS_CONTAINER_RPI_LED_NOOP_CC,   NULL, RPI_LED_NoOpCmd,     0);
@@ -257,7 +257,7 @@ static int32 ProcessCommands(void)
             CMDMGR_DispatchFunc(CMDMGR_OBJ, &SbBufPtr->Msg);
          
          } 
-         else if (CFE_SB_MsgId_Equal(MsgId, RpiLed.SendStatusMid))
+         else if (CFE_SB_MsgId_Equal(MsgId, RpiLed.SendStatusTlmMid))
          {
 
             SendStatusTlm();

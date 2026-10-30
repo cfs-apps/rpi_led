@@ -92,7 +92,7 @@ typedef struct
    uint32             PerfId;
    CFE_SB_PipeId_t    CmdPipe;
    CFE_SB_MsgId_t     CmdMid;
-   CFE_SB_MsgId_t     SendStatusMid;
+   CFE_SB_MsgId_t     SendStatusTlmMid;
    
    LED_CTRL_Class_t   LedCtrl;
  
